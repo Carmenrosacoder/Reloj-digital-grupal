@@ -1,0 +1,45 @@
+body{
+    background:url(../img/aurora-boreal.jpg) no-repeat;
+    background-size: cover;
+    color: gray;
+}
+.clock{
+    margin:3%;
+}
+.btn{
+    margin: 2%;
+}
+.btn-info, .btn-info:hover {
+    color: white;
+    background-color: gray;
+    border-color: gray;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: 10px 16px;
+    font-size: 1.2em;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+input{
+    float: left;
+}
+
+h2{
+    color:white;
+    display: inline;
+}
+p{
+    font-size: 15px;
+    text-align: left;
+    color:black;
+}
+.selecciones{
+    color:white;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 2%;
+}
+.seleccion{
+    display: block;
+    margin:1%;
+}
