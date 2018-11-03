@@ -1,6 +1,4 @@
 
-
-
 window.addEventListener('load', ()=>{
 	horaPeruana();
 	var popUp = document.getElementById("popUp");
