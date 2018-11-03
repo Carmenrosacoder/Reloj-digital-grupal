@@ -11,47 +11,45 @@
 	<body>
 		<div class="text-center">
 			<div class="clock" id="clock">
-	        	<div id="time" class="time">
-	        		<h2 id="horas" class="horas"></h2>
-					<h2>:</h2>
-					<h2 id="minutos" class="minutos"></h2>
-					<h2>:</h2>
-					<h2 id="segundos" class="segundos"></h2>
-	        	</div>
-	        	<div id="date" class="date">
-	        			<h2 id="dia" class="diaSemana"></h2>
-						<h2 id="dianumero" class="dia"></h2>
-						<h2>de </h2>
-						<h2 id="mes" class="mes"></h2>
 
+					<div id="time" class="time">
+						<h2 id="horas" class="horas"></h2>
+						<h2>:</h2>
+						<h2 id="minutos" class="minutos"></h2>
+						<h2>:</h2>
+						<h2 id="segundos" class="segundos"></h2>
+					</div>
+					
+					<div class="date">
+							<h3 id="date"></h3>
+					</div>
+			</div>
+			<button id="boton_popUp" type="button" class="btn btn-info btn-lg">
+					<i class="fa fa-arrows" aria-hidden="true"></i>
+			</button>
+			<div>
+				<ul id="selecciones">
 
-	        	</div>
-	    	</div>
-	    	<button id="btn" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
-	    	    <i class="fa fa-arrows" aria-hidden="true"></i>
-	    	</button>
-	    	<div id="selecciones" class="selecciones">
-				
-	    	</div>
-			<div class="modal fade" id="myModal" role="dialog">
-			    <div class="modal-dialog">
-
+				</ul>
+			</div>
+			<div id="popUp" style="visibility: hidden;">
+			    <div>
 			      <!-- Modal content-->
 			      <div class="modal-content">
 			        <div class="modal-header">
-			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <button type="button" class="close" id="boton_popUp_cerrar" >X</button>
 			        </div>
-			        <div class="modal-body" id="check">
-						<input class="check" type="checkbox" data="-5" data-id="a"><p>Sao Paulo</p></input>
-						<input class="check" type="checkbox" data="-3" data-id="b"><p>Chicago</p></input>
-						<input class="check" type="checkbox" data="-4" data-id="c"><p>Santiago</p></input>
-						<input class="check" type="checkbox" data="-5" data-id="d"><p>México D.F</p></input>
-						<input class="check" type="checkbox" data="-4" data-id="e"><p>Caracas</p></input>
-						<input class="check" type="checkbox" data="-3" data-id="f"><p>Brasilia</p></input>
-						<input class="check" type="checkbox" data="-5" data-id="g"><p>Quito</p></input>
-						<input class="check" type="checkbox" data="-5" data-id="h"><p>Guayaquil</p></input>
-						<input class="check" type="checkbox" data="-5" data-id="i"><p>Santa Marta</p></input>
-						<input class="check" type="checkbox" data="-5" data-id="j"><p>Bogotá</p></input>
+			        <div class="modal-body">
+								<input class="check" type="checkbox" value="Sao Paulo" data="2"><p>Sao Paulo</p></input>
+								<input class="check" type="checkbox" value="Chicago" data="0"><p>Chicago</p></input>
+								<input class="check" type="checkbox" value="Santiago" data="+2"><p>Santiago</p></input>
+								<input class="check" type="checkbox" value="México D.F" data="-1"><p>México D.F</p></input>
+								<input class="check" type="checkbox" value="Caracas" data="+1"><p>Caracas</p></input>
+								<input class="check" type="checkbox" value="Brasilia" data="+2"><p>Brasilia</p></input>
+								<input class="check" type="checkbox" value="Quito" data="0"><p>Quito</p></input>
+								<input class="check" type="checkbox" value="Guayaquil" data="0"><p>Guayaquil</p></input>
+								<input class="check" type="checkbox" value="Santa Marta" data="+1"><p>Santa Marta</p></input>
+								<input class="check" type="checkbox" value="Bogotá" data="+1"><p>Bogotá</p></input>
 			        </div>
 
 			      </div>
@@ -60,11 +58,6 @@
 			 </div>
 		</div>
 
-
-    	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/zonashorarias.js"></script>
-		<script type="text/javascript" src="js/diasymeses.js"></script>
 		<script type="text/javascript" src="js/reloj.js"></script>
 	</body>
 </html>

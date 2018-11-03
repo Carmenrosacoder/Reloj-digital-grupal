@@ -33,13 +33,36 @@ p{
     text-align: left;
     color:black;
 }
-.selecciones{
-    color:white;
-    font-weight: bold;
-    font-size: 16px;
-    margin: 2%;
+#selecciones{
+    padding: 0;
+    width: 300px;
+    margin: 0 auto;
+}
+#selecciones li h2{
+    text-align: left;
+}
+#selecciones li h3, #selecciones li h2{
+    width: 50%;
+    float: left;
+    font-size: 22px;
+    color: white;
 }
 .seleccion{
     display: block;
     margin:1%;
+}
+#popUp{
+    position: absolute;
+    width: 98%;
+    top: 4px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+
+}
+#time h2{
+    font-size: 36px;
+}
+.date h3{
+    color: white;
 }

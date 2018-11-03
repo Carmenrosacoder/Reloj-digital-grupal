@@ -1,94 +1,103 @@
-$(document).ready(function(){
-	horaPeruana();
-	setInterval("horaPeruana()", 500);
-	$('.check').click(function(){
-		var ids= $(this).attr('data-id');
-		var numer=$(this).attr('data');
-		horaInternacional(numer,ids);
 
-		setInterval("horaInternacional("+numer+","+String("'"+ids+"'")+")", 500);
+
+
+window.addEventListener('load', ()=>{
+	horaPeruana();
+	var popUp = document.getElementById("popUp");
+	var boton = document.getElementById("boton_popUp");
+	var boton_cerrar = document.getElementById("boton_popUp_cerrar");
+	var checkboxes = document.querySelectorAll(".check"); 
+
+	boton.addEventListener('click',()=>{
+		mostrarPopUp();
 	});
+	boton_cerrar.addEventListener('click',()=>{
+		cerrarPopUp();
+	});
+	checkboxes.forEach(checkbox => checkbox.addEventListener('click', checkPais));  
+
+	function checkPais(e) {  
+		if (this.checked) {
+			var pais = this.value;
+			var intervalo = this.getAttribute('data');
+			agregarZonaHoraria(pais,intervalo);
+			var new_contenedor_pais = document.createElement("h2");
+			var new_contenedor_hora = document.createElement("h3");
+			var new_hora_pais = document.querySelector("li[value='"+pais+"']");
+			new_hora_pais.appendChild(new_contenedor_pais);
+			new_hora_pais.appendChild(new_contenedor_hora);
+			horaPais(pais);
+
+		}
+		else document.querySelector("#selecciones li[value='"+this.value+"']").remove();
+		
+	  }
+	function mostrarPopUp(){
+		
+		popUp.style.visibility = "visible";
+	}
+	function cerrarPopUp(){
+		popUp.style.visibility = "hidden";
+	}
+	
+	function agregarZonaHoraria(element,intervalo){
+		var caja_horas = document.getElementById("selecciones");
+		var new_hora = document.createElement('li');
+		var valor = document.createAttribute("value");
+		var data_li =document.createAttribute("data");
+		data_li.data = intervalo;
+		valor.value =element;
+		new_hora.setAttribute('value', element);
+		new_hora.setAttribute('data', intervalo);                       
+
+		caja_horas.appendChild(new_hora);
+
+
+	}
+
+	
 });
 
 function horaPeruana(){
+		
 	var fecha = new Date();
 	var	horas = fecha.getHours();
 	var	minutos = fecha.getMinutes();
 	var	segundos = fecha.getSeconds();
+	var dia = fecha.getDay();
+	var mes = fecha.getMonth();
+	console.log(dia, mes)
+	var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+	var nombreDia= new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
 	var idHoras = document.getElementById('horas');
 	var idMinutos = document.getElementById('minutos');
 	var idSegundos = document.getElementById('segundos');
+
 	idHoras.textContent = horas;
 	idMinutos.textContent = minutos;
 	idSegundos.textContent = segundos;
 
-}
-function horaInternacional(a, b){
+	var date = document.getElementById("date");
+	date.innerHTML = nombreDia[dia]+", "+ dia +" de "+meses[mes];
 
-	var fecha = new Date();
-	var	horas = fecha.getHours();
-	var	minutos = fecha.getMinutes();
-	var	segundos = fecha.getSeconds();
-
-	var horaTotal=horas+parseInt(a)+":"+ minutos+":"+segundos;
+	console.log(fecha.toDateString());
+	setTimeout("horaPeruana()", 500);
 	
-	$('#selecciones').html('<div id="'+b+'">'+ horaTotal +'</div>');
 }
-/*function reloj(indice, elem){
+
+function horaPais(pais){
 	var fecha = new Date();
-	var	horas = fecha.getHours();
-	var	minutos = fecha.getMinutes();
-	var	segundos = fecha.getSeconds();
-    var dia = fecha.getDay();
-    var dianumero = fecha.getDate();
-    var mes = fecha.getMonth();
+	var h = fecha.getHours();
+	var m = fecha.getMinutes();
+	var s = fecha.getSeconds();
+	var newIntervalo = document.querySelector("li[value='"+pais+"']");
+	var a = newIntervalo.getAttribute('data');
+	var newHour = h + parseInt(a);
+	setTimeout('horaPais("'+pais+'")',500);
 
-        if (minutos < 10 || segundos <10){ minutos = "0" + minutos;
-        if(segundos<10){
-        segundos = "0" + segundos;} }
-    if (indice == -1) {
-        var idHoras = document.getElementById('horas');
-        var idMinutos = document.getElementById('minutos');
-        var idSegundos = document.getElementById('segundos');
-        var iddia =document.getElementById('dia');
-        var iddianumero = document.getElementById('dianumero');
-        var idmes = document.getElementById('mes');
-        idHoras.textContent = horas;
-		idMinutos.textContent = minutos;
-		idSegundos.textContent = segundos;
-		iddia.textContent = weekdays[dia];
-		iddianumero.textContent = dianumero;
-	    idmes.textContent= months[mes];
-	    setTimeout('reloj(-1)', 500);
-
-    }
-
-}reloj(-1, null);
-
-function horasint(){
-	if($(elem).is(':checked')) {
-		var valor= $(elem).attr('data');
-		var idHoras = document.getElementById('horas');
-        var idMinutos = document.getElementById('minutos');
-        var idSegundos = document.getElementById('segundos');
-        idHoras.textContent = horas;
-		idMinutos.textContent = minutos;
-		idSegundos.textContent = segundos;
-	    setTimeout('reloj(valor)', 500);
-        var gmt=horas+5;
-        zonah[valor].zonahoraria;
-        gmt= gmt+zonah[valor].zonahoraria;
-        $('#selecciones').html('<div id="seleccion"></div>');
-        $('#seleccion').addClass(zonah[valor].ciudad).html(zonah[valor].ciudad + gmt+":"+ minutos+":"+ segundos);
-    }
+	var new_hora_pais = document.querySelector("li[value='"+pais+"'] h2");
+	var new_hora_hora = document.querySelector("li[value='"+pais+"'] h3");
+	new_hora_pais.textContent = pais;
+	new_hora_hora.textContent = newHour+":"+m+":"+s;
+	
 }
-
-
-
-$(document).ready(function(){
-    $('.check').change(function(){
-		var indice = $(this).attr('data');
-		reloj(indice, this);
-	});
-});
-*/
