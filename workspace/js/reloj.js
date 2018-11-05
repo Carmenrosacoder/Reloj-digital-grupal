@@ -49,11 +49,7 @@ window.addEventListener('load', ()=>{
 		new_hora.setAttribute('data', intervalo);                       
 
 		caja_horas.appendChild(new_hora);
-
-
-	}
-
-	
+	}	
 });
 
 function horaPeruana(){
@@ -64,6 +60,7 @@ function horaPeruana(){
 	var	segundos = fecha.getSeconds();
 	var dia = fecha.getDay();
 	var mes = fecha.getMonth();
+	var diaNumero = fecha.getDate();
 	console.log(dia, mes)
 	var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 	var nombreDia= new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
@@ -76,7 +73,7 @@ function horaPeruana(){
 	idSegundos.textContent = segundos;
 
 	var date = document.getElementById("date");
-	date.innerHTML = nombreDia[dia]+", "+ dia +" de "+meses[mes];
+	date.innerHTML = nombreDia[dia]+", "+ diaNumero +" de "+meses[mes];
 
 	console.log(fecha.toDateString());
 	setTimeout("horaPeruana()", 500);

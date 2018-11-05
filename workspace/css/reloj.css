@@ -1,13 +1,14 @@
-body{
-    background:url(../img/aurora-boreal.jpg) no-repeat;
+.background{
+    background-image: url(../img/aurora-boreal.jpg);
     background-size: cover;
     color: gray;
+    height: 100vh;
 }
 .clock{
-    margin:3%;
+    padding:2rem;
 }
 .btn{
-    margin: 2%;
+    margin: 1rem;
 }
 .btn-info, .btn-info:hover {
     color: white;
@@ -37,6 +38,7 @@ p{
     padding: 0;
     width: 300px;
     margin: 0 auto;
+    list-style: none;
 }
 #selecciones li h2{
     text-align: left;
@@ -44,8 +46,9 @@ p{
 #selecciones li h3, #selecciones li h2{
     width: 50%;
     float: left;
-    font-size: 22px;
+    font-size: 19px;
     color: white;
+    margin-bottom: 5px;
 }
 .seleccion{
     display: block;
